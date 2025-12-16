@@ -1,6 +1,6 @@
 {
   "name": "@xystack/up",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Interactive CLI to check and upgrade globally installed packages",
   "type": "module",
   "keywords": [
