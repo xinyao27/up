@@ -28,6 +28,9 @@
     "email": "hi@xinyao.me"
   },
   "funding": "https://github.com/sponsors/xinyao27",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "up": "./dist/index.mjs"
   },
