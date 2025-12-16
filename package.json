@@ -71,7 +71,7 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*": "biome check --write --unsafe --files-ignore-unknown=true"
+    "*": "biome check --write --unsafe --no-errors-on-unmatched --files-ignore-unknown=true"
   },
   "dependencies": {
     "@clack/prompts": "^0.11.0",
