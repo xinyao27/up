@@ -153,8 +153,9 @@ export async function getGlobalPackages(
     }
 
     return packages;
-  } catch (error) {
-    console.error(`Failed to get global packages for ${pm}:`, error);
+  } catch (_error) {
+    // Return empty array instead of logging error
+    // Let the caller handle the error
     return [];
   }
 }
