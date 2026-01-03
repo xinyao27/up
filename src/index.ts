@@ -217,4 +217,15 @@ export default defineApp({
   description:
     "Interactive CLI to check and upgrade globally installed packages",
   tools: [upgradeTool],
+  permissions: {
+    sandbox: {
+      filesystem: {
+        allowWrite: ["*"],
+        allowGitConfig: true,
+      },
+      network: {
+        allowedDomains: ["*"],
+      },
+    },
+  },
 });
