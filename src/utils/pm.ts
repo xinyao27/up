@@ -45,9 +45,7 @@ export async function detectPackageManagers(): Promise<PackageManager[]> {
   return available;
 }
 
-export async function getGlobalPackages(
-  pm: PackageManager,
-): Promise<GlobalPackage[]> {
+export async function getGlobalPackages(pm: PackageManager): Promise<GlobalPackage[]> {
   try {
     let command: string;
 
@@ -138,9 +136,7 @@ export async function getGlobalPackages(
     const packages: GlobalPackage[] = [];
 
     if (data.dependencies) {
-      for (const [name, info] of Object.entries<{ version?: string }>(
-        data.dependencies,
-      )) {
+      for (const [name, info] of Object.entries<{ version?: string }>(data.dependencies)) {
         // Skip packages without version (e.g., broken installations)
         if (info.version) {
           packages.push({
@@ -153,17 +149,14 @@ export async function getGlobalPackages(
     }
 
     return packages;
-  } catch (_error) {
+  } catch {
     // Return empty array instead of logging error
     // Let the caller handle the error
     return [];
   }
 }
 
-export async function upgradePackages(
-  pm: PackageManager,
-  packageNames: string[],
-): Promise<void> {
+export async function upgradePackages(pm: PackageManager, packageNames: string[]): Promise<void> {
   if (packageNames.length === 0) return;
 
   const packages = packageNames.map((name) => `${name}@latest`).join(" ");

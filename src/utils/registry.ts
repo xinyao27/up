@@ -10,13 +10,9 @@ FEATURES:
 SEARCHABLE: npm registry, latest version, semver
 agent-frontmatter:end */
 
-export async function getLatestVersion(
-  packageName: string,
-): Promise<string | null> {
+export async function getLatestVersion(packageName: string): Promise<string | null> {
   try {
-    const response = await fetch(
-      `https://registry.npmjs.org/${packageName}/latest`,
-    );
+    const response = await fetch(`https://registry.npmjs.org/${packageName}/latest`);
 
     if (!response.ok) {
       return null;

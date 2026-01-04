@@ -32,10 +32,7 @@ const upgradeTool = tool({
   name: "upgrade",
   description: "Check and upgrade global packages",
   inputSchema: z.object({
-    all: z
-      .boolean()
-      .optional()
-      .describe("Upgrade all packages without prompting"),
+    all: z.boolean().optional().describe("Upgrade all packages without prompting"),
   }),
   execute: async (args) => {
     let s = spinner("Detecting package managers");
@@ -44,9 +41,7 @@ const upgradeTool = tool({
 
     if (packageManagers.length === 0) {
       s.fail("No package managers found");
-      throw new Error(
-        "No package managers (npm, pnpm, yarn, bun) found on your system",
-      );
+      throw new Error("No package managers (npm, pnpm, yarn, bun) found on your system");
     }
 
     s.succeed(
@@ -172,9 +167,7 @@ const upgradeTool = tool({
 /**
  * Prompt user to select packages for upgrade
  */
-async function promptPackageSelection(
-  packages: PackageWithLatest[],
-): Promise<PackageWithLatest[]> {
+async function promptPackageSelection(packages: PackageWithLatest[]): Promise<PackageWithLatest[]> {
   // Import prompts dynamically to avoid issues in non-TTY environments
   const { multiselect, isCancel, confirm } = await import("@clack/prompts");
 
@@ -214,8 +207,7 @@ async function promptPackageSelection(
 export default defineApp({
   name: "@xinyao27/up",
   version: "0.1.0",
-  description:
-    "Interactive CLI to check and upgrade globally installed packages",
+  description: "Interactive CLI to check and upgrade globally installed packages",
   tools: [upgradeTool],
   permissions: {
     sandbox: {
