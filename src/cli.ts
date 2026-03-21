@@ -14,6 +14,7 @@ agent-frontmatter:end */
 
 import * as p from "@clack/prompts";
 import pc from "picocolors";
+
 import {
   detectPackageManagers,
   type GlobalPackage,
@@ -40,9 +41,7 @@ export async function run(): Promise<void> {
 
   if (packageManagers.length === 0) {
     s.stop("No package managers found");
-    p.outro(
-      pc.red("No package managers (npm, pnpm, yarn, bun) found on your system"),
-    );
+    p.outro(pc.red("No package managers (npm, pnpm, yarn, bun) found on your system"));
     process.exit(1);
   }
 
@@ -65,9 +64,7 @@ export async function run(): Promise<void> {
     process.exit(0);
   }
 
-  s.stop(
-    `Found ${pc.cyan(allPackages.length)} global package${allPackages.length > 1 ? "s" : ""}`,
-  );
+  s.stop(`Found ${pc.cyan(allPackages.length)} global package${allPackages.length > 1 ? "s" : ""}`);
 
   s.start("Checking for updates");
 
@@ -159,7 +156,7 @@ export async function run(): Promise<void> {
       processedCount += packages.length;
     } catch (error) {
       s.stop(`Failed to upgrade packages via ${pm}`);
-      p.log.error(`${pm}: ${error}`);
+      p.log.error(`${pm}: ${String(error)}`);
     }
   }
 

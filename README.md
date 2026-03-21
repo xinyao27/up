@@ -38,6 +38,7 @@ up
 ```
 
 The CLI will:
+
 1. Detect available package managers on your system
 2. Fetch all globally installed packages
 3. Check for available updates
